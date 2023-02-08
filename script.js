@@ -4,6 +4,7 @@ const msg = document.querySelector(".top-banner .msg");
 const list = document.querySelector(".ajax-section .cities");
 const apiKey = "42b48c729cd114f2bd7b7eeb5096fabe";
 
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let inputVal = input.value;
@@ -49,7 +50,8 @@ form.addEventListener("submit", (e) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      const { main, name, sys, weather } = data;
+      const { main, name, sys, weather} = data;
+      console.log(data)
       const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
 
       const li = document.createElement("li");
@@ -69,6 +71,7 @@ form.addEventListener("submit", (e) => {
       `;
       li.innerHTML = markup;
       list.appendChild(li);
+      
     })
     .catch(() => {
       msg.textContent = "Please search for a valid city 😩";
